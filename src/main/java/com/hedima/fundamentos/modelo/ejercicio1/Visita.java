@@ -1,4 +1,4 @@
-package com.hedima.fundamentos.modelo;
+package com.hedima.fundamentos.modelo.ejercicio1;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -17,15 +17,25 @@ public class Visita {
     private Integer id;
     private LocalDate fVisita;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,
+            CascadeType.REFRESH})
     @JoinColumn(name = "matricula", referencedColumnName = "matricula", foreignKey = @ForeignKey(name= "fk_visitas_autobus"))
     private Autobus autobus;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,
+            CascadeType.REFRESH})
     @JoinColumn(name = "id_lugar", referencedColumnName="idLugar", foreignKey = @ForeignKey(name= "fk_visitas_lugares"))
     private Lugar lugar;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,
+            CascadeType.REFRESH})
     @JoinColumn(name = "dni", referencedColumnName="dni", foreignKey=@ForeignKey(name= "fk_visitas_conductores"))
     private Conductor conductor;
+
+    public Visita(LocalDate fVisita, Autobus autobus, Lugar lugar, Conductor conductor) {
+        this.fVisita = fVisita;
+        this.autobus = autobus;
+        this.lugar = lugar;
+        this.conductor = conductor;
+    }
 }

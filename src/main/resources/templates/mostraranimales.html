@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mostrar animales</title>
+</head>
+<body>
+<h1>Mostrar animales</h1>
+<table>
+  <thead>
+      <tr>
+        <th>Id</th>
+        <th>Pais de Origen</th>
+        <th>Sexo</th>
+        <th>Continente</th>
+        <th>Fecha Nacimiento</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr th:each="animal: ${animales}">
+      <td>[[${animal.animalid}]]</td>
+      <td>[[${animal.paisOrigen}]]</td>
+      <td>[[${animal.sexo}]]</td>
+      <td>[[${animal.Continente}]]</td>
+      <td>[[${animal.fNacimiento}]]</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

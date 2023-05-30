@@ -21,4 +21,11 @@ public class Especie {
     private boolean peligroExtincion;
     @Column(length =50)
     private String familia;
+
+    public Especie(String nCientifico, String nVulgar, boolean peligroExtincion, String familia) {
+        this.nCientifico = nCientifico;
+        this.nVulgar = nVulgar;
+        this.peligroExtincion = peligroExtincion;
+        this.familia = familia;
+    }
 }

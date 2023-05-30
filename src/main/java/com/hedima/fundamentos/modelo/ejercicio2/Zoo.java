@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,4 +24,15 @@ public class Zoo {
     @Column(length=60)
     private String nombre;
     private double presupuesto;
+
+    @OneToMany(mappedBy = "zoo", fetch = FetchType.EAGER)
+    private List<Animal> animales;
+
+    public Zoo(double extension, String pais, String ciudad, String nombre, double presupuesto) {
+        this.extension = extension;
+        this.pais = pais;
+        this.ciudad = ciudad;
+        this.nombre = nombre;
+        this.presupuesto = presupuesto;
+    }
 }

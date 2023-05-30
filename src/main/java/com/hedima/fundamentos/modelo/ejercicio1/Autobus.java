@@ -19,11 +19,11 @@ public class Autobus {
     @Column(nullable = false)
     private Integer aFabricacion;
 
-//    @OneToMany(mappedBy = "autobus",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true,
-//            fetch=FetchType.EAGER )
-//    private List<Visita> visitas;
+    @OneToMany(mappedBy = "autobus",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch=FetchType.EAGER )
+    private List<Visita> visitas;
 
 
 

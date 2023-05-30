@@ -1,9 +1,11 @@
 package com.hedima.fundamentos.modelo.ejercicio1;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 @Data
@@ -11,12 +13,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "visitas")
+@ToString(onlyExplicitlyIncluded = true)
 public class Visita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDate fVisita;
 
+    @JsonIgnore
     @ManyToOne(cascade={CascadeType.MERGE,CascadeType.PERSIST,
             CascadeType.REFRESH})
     @JoinColumn(name = "matricula", referencedColumnName = "matricula", foreignKey = @ForeignKey(name= "fk_visitas_autobus"))

@@ -5,6 +5,8 @@ import com.hedima.fundamentos.modelo.repositorio.IAnimalRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AnimalService implements IAnimalService{
     @Autowired
@@ -12,5 +14,10 @@ public class AnimalService implements IAnimalService{
     @Override
     public Animal crear(Animal a) {
         return repo.save(a);
+    }
+
+    @Override
+    public List<Animal> consultarTodos() {
+        return repo.findAll();
     }
 }
